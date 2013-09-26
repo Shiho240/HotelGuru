@@ -23,6 +23,7 @@ android:layout_height="fill_parent">
 	    
 	
 	<Spinner
+	    android:id="@+id/locale"
 	    
 	    
 	    
