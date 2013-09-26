@@ -6,5 +6,7 @@
     <string name="title_section1">Home</string>
     <string name="title_section2">Hotels</string>
     <string name="title_section3">Reservations</string>
+    <string name="uidHint">Username</string>
+    <string name="passHint">Password</string>
 
 </resources>
