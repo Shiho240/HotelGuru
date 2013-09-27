@@ -8,5 +8,6 @@
     <string name="title_section3">Reservations</string>
     <string name="uidHint">Username</string>
     <string name="passHint">Password</string>
+    <string name="submitHint">Submit</string>
 
 </resources>

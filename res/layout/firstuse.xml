@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<EditText 
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:id="@+id/userName"
-	    android:hint="@string/uidHint"
-	    android:inputType="textEmailAddress"/>
-	
-	
-	<EditText
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:id="@+id/userPass"
-	    android:hint="@string/passHint"
-	 	android:inputType="textPassword"   
-	    />
-	    
-	    
-	
-	<Spinner
-	    android:id="@+id/locale"
-	    
-	    
-	    
-	/>
-	
-	<Button
-	    
-	/>
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/uidHint"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/userPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/passHint"
+        android:inputType="textPassword" >
+
+        <requestFocus android:layout_width="match_parent" />
+
+    </EditText>
+
+    <Spinner
+        android:id="@+id/locale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+
+    <Button
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+    	android:hint="@string/submitHint" />
+
 </LinearLayout>

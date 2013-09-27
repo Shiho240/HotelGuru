@@ -29,6 +29,9 @@ public class firstUseSetup extends Activity{
 		else
 		{
 			//NORMAL MODE CONTINUE TO MAIN ACTIVITY
+			
+			//if locale == DE proceed to German side of the app
+			//else if locale is english proceed to english side of the app 
 		}
 	}
 	
