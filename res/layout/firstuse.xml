@@ -25,9 +25,10 @@
     </EditText>
 
     <Spinner
-        android:id="@+id/locale"
+        android:id="@+id/localeSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:entries="@array/locale_array"
         tools:listitem="@android:layout/simple_spinner_dropdown_item" />
 
     <Button
