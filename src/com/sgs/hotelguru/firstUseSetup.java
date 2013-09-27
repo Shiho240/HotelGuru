@@ -20,6 +20,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener{
 	}
 	public static final String PREFS_NAME = "HotelGuru_Prefs_File";
 	public String myLocale = "EN_US"; //default locale is EN_US
+	public myDatabase db;
 	public void firstuse(){
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
 		Spinner spinner = (Spinner) findViewById(R.id.localeSpinner);
@@ -33,7 +34,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener{
 		if(settings.getBoolean("firstBoot", true))
 				{
 					//FIRST BOOT DETECTED, IMPORT DATABASE AND QUERY FOR LOGIN INFORMATION
-					myDatabase db = new myDatabase(this);
+					db = new myDatabase(this);
 					db.getWritableDatabase();
 					db.close();
 					//DONE WITH FIRST RUN, SET PREF FLAG SO IT DOESNT RUN AGAIN
@@ -60,6 +61,13 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener{
 		// TODO Auto-generated method stub
 		
 	}
-	
+	public void onSubmit(View view) {
+	    // Do something in response to button click
+		db.getWritableDatabase();
+		String Username = (String) getText(R.id.userName);
+		String Password = (String) getText(R.id.userPass);
+		String mySQLPrompt = "INSERT INTO User (Username,Password) VALUES ("+Username+","+Password+");";
+		db.insertSQL(mySQLPrompt);
+	}
 		
 }

@@ -34,6 +34,6 @@
     <Button
         android:layout_width="97dp"
         android:layout_height="wrap_content"
-    	android:hint="@string/submitHint" />
-
+    	android:hint="@string/submitHint"
+    	android:onClick="onSubmit"/>
 </LinearLayout>
