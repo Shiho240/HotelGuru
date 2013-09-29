@@ -9,5 +9,6 @@
     <string name="uidHint">Username</string>
     <string name="passHint">Password</string>
     <string name="submitHint">Submit</string>
+    <string name="title_activity_deutsch_main">DeutschMain</string>
 
 </resources>
