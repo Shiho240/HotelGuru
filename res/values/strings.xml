@@ -10,5 +10,7 @@
     <string name="passHint">Password</string>
     <string name="submitHint">Submit</string>
     <string name="title_activity_deutsch_main">DeutschMain</string>
+    <string name="title_activity_maps_example">MapsExample</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

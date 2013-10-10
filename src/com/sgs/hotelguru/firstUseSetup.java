@@ -2,6 +2,7 @@ package com.sgs.hotelguru;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class firstUseSetup extends Activity implements OnItemSelectedListener{
+public class firstUseSetup extends Activity implements OnItemSelectedListener {
 	public myDatabase db;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -47,7 +48,8 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener{
 		else
 		{
 			//NORMAL MODE CONTINUE TO MAIN ACTIVITY
-			
+			Intent intent = new Intent(this, DeutschMain.class);
+			startActivity(intent);
 			//if locale == DE proceed to German side of the app
 			//else if locale is english proceed to english side of the app 
 		}
@@ -73,6 +75,8 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener{
 		String Password = passwordField.getText().toString();
 		Log.v(TAG, "Calling a database insert with Username and password = "+Username+" "+Password);
 		db.insertSQL(Username, Password);
+		Intent intent = new Intent(this, DeutschMain.class);
+		startActivity(intent);
 	}
 		
 }

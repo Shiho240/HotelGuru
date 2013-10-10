@@ -2,6 +2,7 @@ package com.sgs.hotelguru;
 
 import java.util.Locale;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -33,7 +34,7 @@ public class DeutschMain extends FragmentActivity {
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
-
+	public static myDatabase db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class DeutschMain extends FragmentActivity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		db = new myDatabase(getApplicationContext());
 
 	}
 
@@ -110,7 +112,6 @@ public class DeutschMain extends FragmentActivity {
 		 * fragment.
 		 */
 		public static final String ARG_SECTION_NUMBER = "section_number";
-
 		public DummySectionFragment() {
 		}
 
@@ -121,8 +122,7 @@ public class DeutschMain extends FragmentActivity {
 					R.layout.fragment_deutsch_main_dummy, container, false);
 			TextView dummyTextView = (TextView) rootView
 					.findViewById(R.id.section_label);
-			dummyTextView.setText(Integer.toString(getArguments().getInt(
-					ARG_SECTION_NUMBER)));
+			dummyTextView.setText("Welcome Back "+db.getUser());
 			return rootView;
 		}
 	}

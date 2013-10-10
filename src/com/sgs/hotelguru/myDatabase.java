@@ -26,4 +26,11 @@ public void insertSQL(String Username, String Password) {
 	db.insert("User", null, userInfo);
 	db.close();
 }
+
+public String getUser() {
+	SQLiteDatabase db = getReadableDatabase();
+	String myUser = db.query("User", new String[]{"Username"}, "uid = 1", null, null, null, null).toString();
+	return myUser;
+	
+}
 }
