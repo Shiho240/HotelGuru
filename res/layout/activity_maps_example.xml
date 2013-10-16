@@ -1,18 +1,45 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:gravity="center_horizontal"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+              
+<FrameLayout
+    android:id="@+id/DeckLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:gravity="center_horizontal" >
 
-    <CustomDrawableView android:layout_height="fill_parent"
+    <!-- <CustomDrawableView android:layout_height="fill_parent"
                android:layout_width="fill_parent"
-              />
+              />  -->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:clickable="false"
+        android:scaleType="fitCenter"
+        android:src="@drawable/deck12" />
 
     <Button
+        android:id="@+id/QM2_12002"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"/>
 
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/myButtonText"
-            android:gravity="center"
-            />
 
 </FrameLayout>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal" >
+    <Button
+            android:id="@+id/zoom_in"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/zoom_in" />
+</FrameLayout>
+</LinearLayout>

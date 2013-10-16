@@ -48,7 +48,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		else
 		{
 			//NORMAL MODE CONTINUE TO MAIN ACTIVITY
-			Intent intent = new Intent(this, DeutschMain.class);
+			Intent intent = new Intent(this, MapsExample.class);
 			startActivity(intent);
 			//if locale == DE proceed to German side of the app
 			//else if locale is english proceed to english side of the app 

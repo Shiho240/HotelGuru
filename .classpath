@@ -7,8 +7,5 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK/google-play-services_lib"/>
 	<classpathentry exported="true" kind="lib" path="libs/android-sqlite-asset-helper.jar"/>
-	<classpathentry kind="lib" path="/google-play-services_lib"/>
-	<classpathentry exported="true" kind="lib" path="/home/mastershihochief/Dropbox/workspace/google-play-services_lib/libs/google-play-services.jar"/>
-	<classpathentry kind="src" path="/CustomMaps"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

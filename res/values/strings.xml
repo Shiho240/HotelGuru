@@ -12,5 +12,6 @@
     <string name="title_activity_deutsch_main">DeutschMain</string>
     <string name="title_activity_maps_example">MapsExample</string>
     <string name="hello_world">Hello world!</string>
+    <string name="zoom_in">OMG ZOOM IN</string>
 
 </resources>

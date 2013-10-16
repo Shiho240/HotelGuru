@@ -24,17 +24,21 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int deck12=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f090007;
-        public static final int localeSpinner=0x7f090005;
-        public static final int map=0x7f090002;
+        public static final int DeckLayout=0x7f090002;
+        public static final int QM2_12002=0x7f090004;
+        public static final int action_settings=0x7f09000a;
+        public static final int imageView1=0x7f090003;
+        public static final int localeSpinner=0x7f090008;
         public static final int pager=0x7f090000;
         public static final int pager_title_strip=0x7f090001;
-        public static final int section_label=0x7f090006;
-        public static final int userName=0x7f090003;
-        public static final int userPass=0x7f090004;
+        public static final int section_label=0x7f090009;
+        public static final int userName=0x7f090006;
+        public static final int userPass=0x7f090007;
+        public static final int zoom_in=0x7f090005;
     }
     public static final class layout {
         public static final int activity_deutsch_main=0x7f030000;
@@ -59,6 +63,7 @@ public final class R {
         public static final int title_section2=0x7f060003;
         public static final int title_section3=0x7f060004;
         public static final int uidHint=0x7f060005;
+        public static final int zoom_in=0x7f06000b;
     }
     public static final class style {
         /** 
