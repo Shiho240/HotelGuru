@@ -6,11 +6,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DeutschMain$DummySectionFragment" >
+    tools:context=".DeutschMain" >
 
     <TextView
-        android:id="@+id/section_label"
+        android:id="@+id/welcomeDE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/toExampleMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick="onToMap"
+        android:text="Queen Mary 2 Deck 12" />
 
 </RelativeLayout>

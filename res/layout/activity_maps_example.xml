@@ -24,22 +24,39 @@
 
     <Button
         android:id="@+id/QM2_12002"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="7dp"
+        
         android:clickable="true"
-        android:gravity="center"/>
+        android:gravity="center" />
 
+     <Button
+         android:id="@+id/QM2_12081"
+         android:layout_width="20dp"
+         android:layout_height="7dp"
+         android:clickable="true"
+         android:gravity="center"
+         android:background="@android:color/transparent" />
 
 </FrameLayout>
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal" >
+
     <Button
-            android:id="@+id/zoom_in"
-            android:layout_width="102dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/zoom_in" />
+        android:id="@+id/zoom_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/zoom_in" />
+
+    <Button
+        android:id="@+id/zoom_out"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="OMG ZOOM OUT" />
+
 </FrameLayout>
 </LinearLayout>
