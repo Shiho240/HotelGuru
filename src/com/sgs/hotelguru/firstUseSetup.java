@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 public class firstUseSetup extends Activity implements OnItemSelectedListener {
 	public myDatabase db;
+	private Sicherheit meineSicherheit;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -73,7 +74,9 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		EditText passwordField = (EditText) findViewById(R.id.userPass);
 		String Username = uidField.getText().toString();
 		String Password = passwordField.getText().toString();
+		meineSicherheit = new Sicherheit("Starlite");//Create new security
 		Log.v(TAG, "Calling a database insert with Username and password = "+Username+" "+Password);
+		String encrypted = meineSicherheit.encrypt(Password);
 		db.insertSQL(Username, Password);
 		Intent intent = new Intent(this, DeutschMain.class);
 		startActivity(intent);
