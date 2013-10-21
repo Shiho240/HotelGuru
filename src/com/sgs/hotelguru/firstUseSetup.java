@@ -1,10 +1,16 @@
 package com.sgs.hotelguru;
 
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +22,7 @@ import android.widget.Spinner;
 public class firstUseSetup extends Activity implements OnItemSelectedListener {
 	public myDatabase db;
 	private Sicherheit meineSicherheit;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -30,6 +37,8 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
 		db = new myDatabase(this);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		Log.v(TAG, "Database and spinner created, and about to call firstrun?");
 		firstuse();
 	}
@@ -67,7 +76,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		// TODO Auto-generated method stub
 		
 	}
-	public void onSubmit(View view) {
+	public void onSubmit(View view) throws UnsupportedEncodingException {
 	    // Do something in response to button click
 		Log.v(TAG, "Submit button pressed");
 		EditText uidField = (EditText) findViewById(R.id.userName);
@@ -77,6 +86,12 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		meineSicherheit = new Sicherheit("Starlite");//Create new security
 		Log.v(TAG, "Calling a database insert with Username and password = "+Username+" "+Password);
 		String encrypted = meineSicherheit.encrypt(Password);
+		//ITS JSON TIEM!!
+		JSONObj JSONtiem = new JSONObj();
+		String myUrl = "http://hotelguru.no-ip.org/scripts/UserCheck.php?username="+URLEncoder.encode(Username, "UTF-8")+"&&password="+URLEncoder.encode(encrypted, "UTF-8");
+		JSONObject myData;
+		myData = JSONtiem.getJSONFromUrl(myUrl);
+		Log.v(TAG, myData.toString());
 		db.insertSQL(Username, Password);
 		Intent intent = new Intent(this, DeutschMain.class);
 		startActivity(intent);
