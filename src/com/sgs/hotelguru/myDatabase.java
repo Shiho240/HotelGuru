@@ -78,6 +78,7 @@ public ArrayList<String> getCruiseLines()
 		myCruiseLines.add(myCursor.getString(0));
 		myCursor.moveToNext();
 	}
+	db.close();
 	return myCruiseLines;
 	
 }

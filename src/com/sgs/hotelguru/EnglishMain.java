@@ -1,5 +1,7 @@
 package com.sgs.hotelguru;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -8,10 +10,18 @@ import android.widget.Spinner;
 
 public class EnglishMain extends Activity {
 
+	myDatabase db;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_english_main);
+		db = new myDatabase(getApplicationContext());
+		ArrayList<String> myCruiseLines = new ArrayList<String>();
+		myCruiseLines = db.getCruiseLines();
+		
+		Spinner spinner = (Spinner)findViewById(R.id.CruiseLineSpinner);
+		ArrayAdapter<String> spinnerArrayAdapterCLS = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, myCruiseLines);
+		spinner.setAdapter(spinnerArrayAdapterCLS);
 		//lets deal with our dynamic spinners here
 		
 		/*Spinner spinner = (Spinner) findViewById(R.id.localeSpinner);
