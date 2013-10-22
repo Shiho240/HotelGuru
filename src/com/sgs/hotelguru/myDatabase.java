@@ -101,4 +101,24 @@ public ArrayList<String> getCruiseShips(String mySelectedCL) {
 			return myCruiseShips;
 }
 
+public ArrayList<String> getNumDecks(String myShip) {
+	// TODO Auto-generated method stub
+	ArrayList<String> myDecks = new ArrayList<String>();
+	SQLiteDatabase db = getReadableDatabase();
+	String[] selargs = new String[1];
+	selargs[0] = myShip;
+	Cursor myCursor = db.rawQuery("SELECT Ship_Decks FROM Ships WHERE Ship_Name=?", selargs);
+	myCursor.moveToFirst();
+	int myNumDecks = 0;
+			for(int i = 0; i<myCursor.getCount();i++)
+			{
+				myNumDecks = myCursor.getInt(0);
+				myCursor.moveToNext();
+			}
+			db.close();
+			for(int i = 1; i<=myNumDecks;i++)
+				myDecks.add("Deck "+i);
+			return myDecks;
+}
+
 }

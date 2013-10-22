@@ -16,6 +16,9 @@ public class EnglishMain extends Activity {
 
 	myDatabase db;
 	String mySelectedCL;
+	String GlobalCruiseLine;
+	String GlobalShipName;
+	String GlobalShipDeck;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,8 +47,13 @@ public void SetCruiseShip(String myCruiseLine)
 	shipSpinner.setAdapter(spinnerArrayAdapterCLS);
 	shipSpinner.setOnItemSelectedListener(new cruiseShipOnClickListener());
 }
-public void SetShipDeck(int numDecks){
-	
+public void SetShipDeck(String myShip){
+	ArrayList<String> myShipDecks = new ArrayList<String>();
+	myShipDecks = db.getNumDecks(myShip);
+	Spinner DecksSpinner = (Spinner) findViewById(R.id.DeckSelectSpinner);
+	ArrayAdapter<String> spinnerArrayAdapterDCS = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, myShipDecks);
+	DecksSpinner.setAdapter(spinnerArrayAdapterDCS);
+	DecksSpinner.setOnItemSelectedListener(new DeckOnClickListener());
 }
 		
 	@Override
@@ -62,6 +70,7 @@ public void SetShipDeck(int numDecks){
 	           long id) {
 
 	       String mySelectedCL = parent.getItemAtPosition(pos).toString();
+	       GlobalCruiseLine = mySelectedCL;
 	       Log.v("ENGLISHMAIN","Selected Cruise line is "+mySelectedCL);
 	       SetCruiseShip(mySelectedCL);
 
@@ -79,7 +88,26 @@ public void SetShipDeck(int numDecks){
 	   public void onItemSelected(AdapterView<?> parent, View v, int pos,
 	           long id) {
 
-	       parent.getItemAtPosition(pos);  
+	      String myShip = parent.getItemAtPosition(pos).toString();
+	      GlobalShipName = myShip;
+	       SetShipDeck(myShip);
+
+	      
+	}
+	   @Override
+	   public void onNothingSelected(AdapterView<?> arg0) {
+	       // TODO Auto-generated method stub
+
+	   }
+	}
+	public class DeckOnClickListener implements OnItemSelectedListener {
+
+	    @Override
+	   public void onItemSelected(AdapterView<?> parent, View v, int pos,
+	           long id) {
+
+	       String myDeck = parent.getItemAtPosition(pos).toString();
+	       GlobalShipDeck = myDeck;
 
 	      
 	}
