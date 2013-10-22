@@ -13,5 +13,6 @@
     <string name="title_activity_maps_example">MapsExample</string>
     <string name="hello_world">Hello world!</string>
     <string name="zoom_in">OMG ZOOM IN</string>
+    <string name="title_activity_english_main">EnglishMain</string>
 
 </resources>

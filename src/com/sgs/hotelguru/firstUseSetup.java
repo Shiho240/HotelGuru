@@ -37,6 +37,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
 		db = new myDatabase(this);
+		//im lazy sue me.... this is totally bad, should use async call for http.
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		Log.v(TAG, "Database and spinner created, and about to call firstrun?");
@@ -58,7 +59,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		else
 		{
 			//NORMAL MODE CONTINUE TO MAIN ACTIVITY
-			Intent intent = new Intent(this, DeutschMain.class);
+			Intent intent = new Intent(this, EnglishMain.class);
 			startActivity(intent);
 			//if locale == DE proceed to German side of the app
 			//else if locale is english proceed to english side of the app 

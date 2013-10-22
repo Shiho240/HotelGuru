@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".EnglishMain" >
+
+    <Spinner
+        android:id="@+id/ShipSelectSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CruiseLineSpinner"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp" />
+
+    <Spinner
+        android:id="@+id/CruiseLineSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ShipSelectSpinner"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/DeckSelectSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CruiseLineSpinner"
+        android:layout_below="@+id/CruiseLineSpinner" />
+
+    <Button
+        android:id="@+id/SubmitMapSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"
+        android:text="Submit" />
+
+</RelativeLayout>

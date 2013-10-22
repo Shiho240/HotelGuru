@@ -1,5 +1,7 @@
 package com.sgs.hotelguru;
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -64,6 +66,20 @@ public roomDataStruct getRoomData(String shipName, int roomNum)
 	myRoomData.setRoomExt(myRoomExt);
 	db.close();
 	return myRoomData;
+}
+public ArrayList<String> getCruiseLines()
+{
+	ArrayList<String> myCruiseLines = new ArrayList<String>();
+	SQLiteDatabase db = getReadableDatabase();
+	Cursor myCursor = db.rawQuery("SELECT DISTINCT Cruise_Line from Ships", null);
+	myCursor.moveToFirst();
+	for(int i = 0; i<myCursor.getCount();i++)
+	{
+		myCruiseLines.add(myCursor.getString(0));
+		myCursor.moveToNext();
+	}
+	return myCruiseLines;
+	
 }
 
 }
