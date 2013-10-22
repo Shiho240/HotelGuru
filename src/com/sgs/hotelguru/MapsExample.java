@@ -25,11 +25,25 @@ public class MapsExample extends Activity {
     myDatabase db;
 	float myWorkX = 0;
 	float myWorkY = 0;
+	String GlobalCruiseLine;
+	String GlobalShipName;
+	String GlobalShipDeck;
+
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_example);
+        
+    	Bundle extras = getIntent().getExtras();
+    	if (extras != null) {
+    	    GlobalCruiseLine = extras.getString("GlobalCruiseLine");
+    	    GlobalShipName = extras.getString("GlobalShipName");
+    	    GlobalShipDeck = extras.getString("GlobalShipDeck");
+    	    Toast.makeText(MapsExample.this,"MOVED to selected Deck Plans for "+GlobalCruiseLine+" "+GlobalShipName+" "+GlobalShipDeck,
+                    Toast.LENGTH_SHORT).show();
+    	}
+        
         mainView =findViewById(R.id.DeckLayout);
         db = new myDatabase(getApplicationContext());
 

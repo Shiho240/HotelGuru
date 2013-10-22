@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class EnglishMain extends Activity {
 
@@ -25,6 +27,17 @@ public class EnglishMain extends Activity {
 		setContentView(R.layout.activity_english_main);
 		db = new myDatabase(getApplicationContext());
 		this.SetCruiseLine();
+	}
+	
+	public void onSpinnerSubmit(View v){
+	
+		Intent i = new Intent(getApplicationContext(), MapsExample.class);
+		i.putExtra("GlobalCruiseLine",GlobalCruiseLine);
+		i.putExtra("GlobalShipName", GlobalShipName);
+		i.putExtra("GlobalShipDeck", GlobalShipDeck);
+		startActivity(i);
+		Toast.makeText(EnglishMain.this,"Preparing to move to selected Deck Plans for "+GlobalCruiseLine+" "+GlobalShipName+" "+GlobalShipDeck,
+                Toast.LENGTH_SHORT).show();
 	}
 	
 public void SetCruiseLine()
