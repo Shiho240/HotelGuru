@@ -33,8 +33,8 @@ public final class R {
         public static final int DeckSelectSpinner=0x7f090002;
         public static final int QM2_12002=0x7f090006;
         public static final int QM2_12081=0x7f090007;
-        public static final int ShipSelectSpinner=0x7f090000;
-        public static final int SubmitMapSelect=0x7f090003;
+        public static final int ShipSelectSpinner=0x7f090003;
+        public static final int SubmitMapSelect=0x7f090000;
         public static final int action_settings=0x7f09000f;
         public static final int imageView1=0x7f090005;
         public static final int localeSpinner=0x7f09000e;

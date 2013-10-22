@@ -83,4 +83,22 @@ public ArrayList<String> getCruiseLines()
 	
 }
 
+public ArrayList<String> getCruiseShips(String mySelectedCL) {
+	// TODO Auto-generated method stub
+	ArrayList<String> myCruiseShips = new ArrayList<String>();
+	SQLiteDatabase db = getReadableDatabase();
+	String[] selargs = new String[1];
+	selargs[0] = mySelectedCL;
+	Log.v("DB QUERY", "getting cruise ship with cruise line = "+selargs[0]);
+	Cursor myCursor = db.rawQuery("SELECT Ship_Name FROM Ships WHERE Cruise_Line=?", selargs);
+	myCursor.moveToFirst();
+			for(int i = 0; i<myCursor.getCount();i++)
+			{
+				myCruiseShips.add(myCursor.getString(0));
+				myCursor.moveToNext();
+			}
+			db.close();
+			return myCruiseShips;
+}
+
 }
