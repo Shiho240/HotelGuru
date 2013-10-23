@@ -120,5 +120,31 @@ public ArrayList<String> getNumDecks(String myShip) {
 				myDecks.add("Deck "+i);
 			return myDecks;
 }
-
+public ArrayList<ButtonStruct> getButtonCoords(String myShip, int myDeck){
+	ArrayList<ButtonStruct> myButtonData = new ArrayList<ButtonStruct>();
+	SQLiteDatabase db = getReadableDatabase();
+	String[] selargs = new String[2];
+	selargs[0] = myShip;
+	selargs[1] = Integer.toString(myDeck);
+	Cursor myCursor = db.rawQuery("SELECT Room_Num, ButtonX, ButtonY FROM Rooms WHERE Ship_Name=? AND Room_Deck=?",selargs);
+	myCursor.moveToFirst();
+	for(int i=0;i<myCursor.getCount();i++)
+	{
+		
+		int myRoomNum = myCursor.getInt(0);
+		int myButtonX = myCursor.getInt(1);
+		int myButtonY = myCursor.getInt(2);
+		ButtonStruct myWorkButton = new ButtonStruct();
+		myWorkButton.setShip_Name(myShip);
+		myWorkButton.setRoom_Deck(myDeck);
+		myWorkButton.setRoom_Num(myRoomNum);
+		myWorkButton.setButtonX(myButtonX);
+		myWorkButton.setButtonY(myButtonY);
+		myButtonData.add(myWorkButton);
+		myCursor.moveToNext();
+		
+	}
+	
+	return myButtonData;
+}
 }

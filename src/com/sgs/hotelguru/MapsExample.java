@@ -1,5 +1,7 @@
 package com.sgs.hotelguru;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.graphics.PointF;
 import android.os.Bundle;
@@ -44,6 +46,8 @@ public class MapsExample extends Activity {
                     Toast.LENGTH_SHORT).show();
     	}
         
+    	dynamicButtons();
+    	
         mainView =findViewById(R.id.DeckLayout);
         db = new myDatabase(getApplicationContext());
 
@@ -109,7 +113,6 @@ public class MapsExample extends Activity {
                 Toast.makeText(MapsExample.this,myRoomData.getRoomNum()+" "+myRoomData.getRoomType()+" "+myRoomData.getRoomDeck(),
                         Toast.LENGTH_SHORT).show();
             }
-            
         });
         mainView.post(new Runnable() {
             // Post in the parent's message queue to make sure the parent
@@ -129,7 +132,18 @@ public class MapsExample extends Activity {
     }
 
 
-    /** zooming is done from here */
+    private void dynamicButtons() {
+		// TODO Auto-generated method stub
+    	String delims = "[ ]+";
+    	String[] tokens = GlobalShipDeck.split(delims);
+    	
+    	ArrayList<ButtonStruct> myButtonData = db.getButtonCoords(GlobalShipName, Integer.parseInt(tokens[1]));
+    	
+		
+	}
+
+
+	/** zooming is done from here */
     public void zoom(PointF pivot){
         mainView.setPivotX(pivot.x);
         mainView.setPivotY(pivot.y);
