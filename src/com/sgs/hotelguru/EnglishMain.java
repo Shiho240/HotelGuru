@@ -28,7 +28,9 @@ public class EnglishMain extends Activity {
 		db = new myDatabase(getApplicationContext());
 		this.SetCruiseLine();
 	}
-	
+	@Override
+	public void onBackPressed() {
+	}
 	public void onSpinnerSubmit(View v){
 	
 		Intent i = new Intent(getApplicationContext(), MapsExample.class);

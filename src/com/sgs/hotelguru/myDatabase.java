@@ -121,6 +121,7 @@ public ArrayList<String> getNumDecks(String myShip) {
 			return myDecks;
 }
 public ArrayList<ButtonStruct> getButtonCoords(String myShip, int myDeck){
+	Log.v("GETBUTTONCOORDS", "Starting getButtonCoords");
 	ArrayList<ButtonStruct> myButtonData = new ArrayList<ButtonStruct>();
 	SQLiteDatabase db = getReadableDatabase();
 	String[] selargs = new String[2];
@@ -144,7 +145,7 @@ public ArrayList<ButtonStruct> getButtonCoords(String myShip, int myDeck){
 		myCursor.moveToNext();
 		
 	}
-	
+	Log.v("GETBUTTONCOORDS", "about to return buttondata");
 	return myButtonData;
 }
 }

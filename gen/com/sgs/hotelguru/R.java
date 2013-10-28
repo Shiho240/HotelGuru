@@ -31,19 +31,17 @@ public final class R {
         public static final int CruiseLineSpinner=0x7f090001;
         public static final int DeckLayout=0x7f090004;
         public static final int DeckSelectSpinner=0x7f090002;
-        public static final int QM2_12002=0x7f090006;
-        public static final int QM2_12081=0x7f090007;
         public static final int ShipSelectSpinner=0x7f090003;
         public static final int SubmitMapSelect=0x7f090000;
-        public static final int action_settings=0x7f09000f;
+        public static final int action_settings=0x7f09000d;
         public static final int imageView1=0x7f090005;
-        public static final int localeSpinner=0x7f09000e;
-        public static final int toExampleMap=0x7f09000b;
-        public static final int userName=0x7f09000c;
-        public static final int userPass=0x7f09000d;
-        public static final int welcomeDE=0x7f09000a;
-        public static final int zoom_in=0x7f090008;
-        public static final int zoom_out=0x7f090009;
+        public static final int localeSpinner=0x7f09000c;
+        public static final int toExampleMap=0x7f090009;
+        public static final int userName=0x7f09000a;
+        public static final int userPass=0x7f09000b;
+        public static final int welcomeDE=0x7f090008;
+        public static final int zoom_in=0x7f090006;
+        public static final int zoom_out=0x7f090007;
     }
     public static final class layout {
         public static final int activity_english_main=0x7f030000;

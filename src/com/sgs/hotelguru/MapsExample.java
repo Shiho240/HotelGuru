@@ -1,25 +1,30 @@
 package com.sgs.hotelguru;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import android.app.Activity;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
-
+import android.view.ViewGroup.LayoutParams;
 
 
 
 public class MapsExample extends Activity {
 
-	View mainView;
-    Button QM2_12002;
-    Button QM2_12081;
+	RelativeLayout mainView;
+    //Button QM2_12002;
+    //Button QM2_12081;
     Button buttonZoomIn;
     final float Zoom_max = 4f;
     final float Zoom_min = 1f;
@@ -30,6 +35,9 @@ public class MapsExample extends Activity {
 	String GlobalCruiseLine;
 	String GlobalShipName;
 	String GlobalShipDeck;
+	ArrayList<ButtonStruct> myButtonData;
+	Button [] buttons;
+	int counter;
 
 	
     @Override
@@ -45,18 +53,50 @@ public class MapsExample extends Activity {
     	    Toast.makeText(MapsExample.this,"MOVED to selected Deck Plans for "+GlobalCruiseLine+" "+GlobalShipName+" "+GlobalShipDeck,
                     Toast.LENGTH_SHORT).show();
     	}
-        
-    	dynamicButtons();
     	
-        mainView =findViewById(R.id.DeckLayout);
+       
+    	
+        mainView = (RelativeLayout) findViewById(R.id.DeckLayout);
         db = new myDatabase(getApplicationContext());
+        
+        //dynamically create buttons here
+    	String delims = "[ ]+";
+    	String[] tokens = GlobalShipDeck.split(delims);
+    	int myDeck = Integer.parseInt(tokens[1]);
+    	
+    	Log.v("MapsExample", "about to get coords from database from deck "+myDeck);
+    	myButtonData = db.getButtonCoords(GlobalShipName, myDeck);
+    	counter = myButtonData.size();
+    	Log.v("Button Data", "Size of button struct is: "+counter);
+    	buttons = new Button[counter];
+    	for(int i = 0; i<counter;i++)
+    	{
+    		buttons[i] = new Button(this);
+    		int mycoordX = myButtonData.get(i).getButtonX();
+    		int mycoordY = myButtonData.get(i).getButtonY();
+    		Log.v("Dynamic Button", "creating new button at "+mycoordX+" "+mycoordY);
+    		buttons[i].setX(mycoordX);
+    		buttons[i].setY(mycoordY);
+    		buttons[i].setEnabled(true);
+    		buttons[i].setTextSize(10.f);
+    		buttons[i].setText(GlobalShipName+"_"+myButtonData.get(i).getRoom_Num());
+    		buttons[i].setOnClickListener(new ButtonListener());
+    		RelativeLayout.LayoutParams lprams = new RelativeLayout.LayoutParams(
+    	            RelativeLayout.LayoutParams.WRAP_CONTENT,
+    	            RelativeLayout.LayoutParams.WRAP_CONTENT);
+            buttons[i].setId(myButtonData.get(i).getRoom_Num());
+            lprams.setMargins(mycoordX, mycoordY, 0, 0);
+            buttons[i].setLayoutParams(lprams);
+            mainView.addView(buttons[i],lprams);
+    	}
+
 
         Button buttonZoomOut = (Button)findViewById(R.id.zoom_out);
         buttonZoomOut.setX(350);
         //Button buttonNormal = (Button)findViewById(R.id.reset);
         buttonZoomIn = (Button)findViewById(R.id.zoom_in);
-        QM2_12002 = (Button)findViewById(R.id.QM2_12002);
-        QM2_12081 = (Button)findViewById(R.id.QM2_12081);
+        //QM2_12002 = (Button)findViewById(R.id.QM2_12002);
+        //QM2_12081 = (Button)findViewById(R.id.QM2_12081);
       buttonZoomOut.setOnClickListener(new OnClickListener() {
 
        @Override
@@ -93,7 +133,7 @@ public class MapsExample extends Activity {
                 zoom(new PointF(myWorkX,myWorkY));
             }
         });
-        QM2_12002.setOnClickListener(new View.OnClickListener() {
+     /*   QM2_12002.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             	//float myWorkX = QM2_12002.getX();
@@ -113,34 +153,39 @@ public class MapsExample extends Activity {
                 Toast.makeText(MapsExample.this,myRoomData.getRoomNum()+" "+myRoomData.getRoomType()+" "+myRoomData.getRoomDeck(),
                         Toast.LENGTH_SHORT).show();
             }
-        });
-        mainView.post(new Runnable() {
+        });*/
+       mainView.post(new Runnable() {
             // Post in the parent's message queue to make sure the parent
             // lays out its children before you call getHitRect()
             @Override
             public void run() {
                 // The bounds for the delegate view (an ImageButton
                 // in this example)
-                QM2_12002.setX(325);
+            	for(int i = 0; i<counter;i++)
+            	{
+            		int mycoordX = myButtonData.get(i).getButtonX();
+            		int mycoordY = myButtonData.get(i).getButtonY();
+            		buttons[i].setX(mycoordX);
+            		buttons[i].setY(mycoordY);
+            		buttons[i].setEnabled(true);
+            	}
+               /* QM2_12002.setX(325);
                 QM2_12002.setY(92);
                 QM2_12002.setEnabled(true);
                 QM2_12081.setX(390);
                 QM2_12081.setY(370);
-                QM2_12081.setEnabled(true);
+                QM2_12081.setEnabled(true);*/
+            	
+            	//Iterator<ButtonStruct> buttonIterator = myButtonData.iterator();
+            	//while(buttonIterator.hasNext())
+            	//{
+            		
+            	//}
             }
         });
+
     }
 
-
-    private void dynamicButtons() {
-		// TODO Auto-generated method stub
-    	String delims = "[ ]+";
-    	String[] tokens = GlobalShipDeck.split(delims);
-    	
-    	ArrayList<ButtonStruct> myButtonData = db.getButtonCoords(GlobalShipName, Integer.parseInt(tokens[1]));
-    	
-		
-	}
 
 
 	/** zooming is done from here */
@@ -173,5 +218,15 @@ public class MapsExample extends Activity {
              mainView.setScaleX(workScaleX/2f);
              mainView.setScaleY(workScaleY/2f);
          }
+    }
+    public class ButtonListener implements View.OnClickListener{
+
+    	@Override
+    	public void onClick(View v) {
+    		// TODO Auto-generated method stub
+    		 Toast.makeText(MapsExample.this,"Debug: Room Button clicked",
+                     Toast.LENGTH_SHORT).show();
+    	}
+
     }
 }

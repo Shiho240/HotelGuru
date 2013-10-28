@@ -3,7 +3,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
               
-<FrameLayout
+<RelativeLayout
     android:id="@+id/DeckLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,23 +22,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/deck12" />
 
-    <Button
-        android:id="@+id/QM2_12002"
-        android:layout_width="20dp"
-        android:layout_height="7dp"
-        
-        android:clickable="true"
-        android:gravity="center" />
-
-     <Button
-         android:id="@+id/QM2_12081"
-         android:layout_width="20dp"
-         android:layout_height="7dp"
-         android:clickable="true"
-         android:gravity="center"
-         android:background="@android:color/transparent" />
-
-</FrameLayout>
+</RelativeLayout>
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
