@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -72,21 +73,27 @@ public class MapsExample extends Activity {
     	
         mainView = (RelativeLayout) findViewById(R.id.DeckLayout);
         db = new myDatabase(getApplicationContext());
+        String delims = "[ ]+";
+    	String[] tokens = GlobalShipDeck.split(delims);
+    	int myDeck = Integer.parseInt(tokens[1]);
         
         //ImageView img = (ImageView) findViewById(R.id.imageView1);
         ImageView img = new ImageView(this);
         RelativeLayout.LayoutParams vp = new RelativeLayout.LayoutParams(
-	            RelativeLayout.LayoutParams.WRAP_CONTENT,
-	            RelativeLayout.LayoutParams.WRAP_CONTENT);
+	            RelativeLayout.LayoutParams.MATCH_PARENT,
+	            RelativeLayout.LayoutParams.MATCH_PARENT);
         img.setLayoutParams(vp);
         AssetManager assetManager = getResources().getAssets();
         //set image for deckplans
 		try {
-			InputStream ims = assetManager.open("Cunard/Queen Mary 2/deck 12.jpg");
+			InputStream ims = assetManager.open(GlobalCruiseLine+"/"+GlobalShipName+"/"+"deck "+myDeck+".jpg");
 			Drawable d = Drawable.createFromStream(ims, null);
             // set image to ImageView
             img.setImageDrawable(d);
             img.setScaleType(ScaleType.FIT_CENTER);
+            DisplayMetrics dm1 = getResources().getDisplayMetrics();
+    		float Simgheight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 420, dm1);
+            vp.height = (int) Simgheight;
             mainView.addView(img,vp);
             
 		} catch (IOException e) {
@@ -96,9 +103,7 @@ public class MapsExample extends Activity {
 
 
         //dynamically create buttons here
-    	String delims = "[ ]+";
-    	String[] tokens = GlobalShipDeck.split(delims);
-    	int myDeck = Integer.parseInt(tokens[1]);
+    	
     	
     	Log.v("MapsExample", "about to get coords from database from deck "+myDeck);
     	myButtonData = db.getButtonCoords(GlobalShipName, myDeck);
@@ -140,8 +145,15 @@ public class MapsExample extends Activity {
 
         Button buttonZoomOut = (Button)findViewById(R.id.zoom_out);
         buttonZoomOut.setX(350);
+        buttonZoomOut.bringToFront();
+        
         //Button buttonNormal = (Button)findViewById(R.id.reset);
         buttonZoomIn = (Button)findViewById(R.id.zoom_in);
+        buttonZoomIn.bringToFront();
+        
+        FrameLayout zoom = (FrameLayout) findViewById(R.id.zoom_Layout);
+        zoom.bringToFront();
+        zoom.requestFocus();
         //QM2_12002 = (Button)findViewById(R.id.QM2_12002);
         //QM2_12081 = (Button)findViewById(R.id.QM2_12081);
       buttonZoomOut.setOnClickListener(new OnClickListener() {
