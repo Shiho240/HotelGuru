@@ -1,12 +1,21 @@
 package com.sgs.hotelguru;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import android.app.Activity;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PointF;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +23,8 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.view.ViewGroup.LayoutParams;
@@ -38,9 +49,12 @@ public class MapsExample extends Activity {
 	ArrayList<ButtonStruct> myButtonData;
 	Button [] buttons;
 	int counter;
+	//int width = 20;
+	//int height = 7;
 
 	
-    @Override
+    //@SuppressWarnings("deprecation")
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_example);
@@ -59,6 +73,28 @@ public class MapsExample extends Activity {
         mainView = (RelativeLayout) findViewById(R.id.DeckLayout);
         db = new myDatabase(getApplicationContext());
         
+        //ImageView img = (ImageView) findViewById(R.id.imageView1);
+        ImageView img = new ImageView(this);
+        RelativeLayout.LayoutParams vp = new RelativeLayout.LayoutParams(
+	            RelativeLayout.LayoutParams.WRAP_CONTENT,
+	            RelativeLayout.LayoutParams.WRAP_CONTENT);
+        img.setLayoutParams(vp);
+        AssetManager assetManager = getResources().getAssets();
+        //set image for deckplans
+		try {
+			InputStream ims = assetManager.open("Cunard/Queen Mary 2/deck 12.jpg");
+			Drawable d = Drawable.createFromStream(ims, null);
+            // set image to ImageView
+            img.setImageDrawable(d);
+            img.setScaleType(ScaleType.FIT_CENTER);
+            mainView.addView(img,vp);
+            
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
         //dynamically create buttons here
     	String delims = "[ ]+";
     	String[] tokens = GlobalShipDeck.split(delims);
@@ -79,13 +115,24 @@ public class MapsExample extends Activity {
     		buttons[i].setY(mycoordY);
     		buttons[i].setEnabled(true);
     		buttons[i].setTextSize(10.f);
+    		//buttons[i].setVisibility(View.INVISIBLE);
     		buttons[i].setText(GlobalShipName+"_"+myButtonData.get(i).getRoom_Num());
+    		DisplayMetrics dm = getResources().getDisplayMetrics();
+    		float scaledW = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, dm);
+    		float scaledH = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 7, dm);
+    		//buttons[i].setHeight(scaledH);
+    		//buttons[i].setWidth (scaledW);
     		buttons[i].setOnClickListener(new ButtonListener());
     		RelativeLayout.LayoutParams lprams = new RelativeLayout.LayoutParams(
     	            RelativeLayout.LayoutParams.WRAP_CONTENT,
     	            RelativeLayout.LayoutParams.WRAP_CONTENT);
             buttons[i].setId(myButtonData.get(i).getRoom_Num());
             lprams.setMargins(mycoordX, mycoordY, 0, 0);
+            lprams.height = (int) scaledH;
+            lprams.width = (int) scaledW;
+            lprams.leftMargin = mycoordX;
+            lprams.topMargin = mycoordY;
+            
             buttons[i].setLayoutParams(lprams);
             mainView.addView(buttons[i],lprams);
     	}
@@ -116,7 +163,7 @@ public class MapsExample extends Activity {
 			@Override
 			public boolean onTouch(View arg0, MotionEvent arg1) {
 				// TODO Auto-generated method stub
-				Toast.makeText(MapsExample.this,"Setting zoom point to here",Toast.LENGTH_SHORT).show();
+				//Toast.makeText(MapsExample.this,"Setting zoom point to here",Toast.LENGTH_SHORT).show();
 				myWorkX = arg1.getX();
 				myWorkY = arg1.getY();
 				return true;

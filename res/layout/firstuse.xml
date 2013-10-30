@@ -11,18 +11,16 @@
         android:layout_height="wrap_content"
         android:hint="@string/uidHint"
         android:inputType="textEmailAddress" />
-
+ <requestFocus android:layout_width="match_parent" />
+    
     <EditText
         android:id="@+id/userPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/passHint"
-        android:inputType="textPassword" >
+        android:inputType="textPassword" />
 
-        <requestFocus android:layout_width="match_parent" />
-
-    </EditText>
 
     <Spinner
         android:id="@+id/localeSpinner"

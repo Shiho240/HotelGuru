@@ -19,8 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="420dp"
         android:clickable="false"
-        android:scaleType="fitCenter"
-        android:src="@drawable/deck12" />
+        android:scaleType="fitCenter"/>
 
 </RelativeLayout>
 <FrameLayout
