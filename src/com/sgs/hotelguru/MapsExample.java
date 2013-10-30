@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -283,8 +284,13 @@ public class MapsExample extends Activity {
     	@Override
     	public void onClick(View v) {
     		// TODO Auto-generated method stub
-    		 Toast.makeText(MapsExample.this,"Debug: Room Button clicked",
-                     Toast.LENGTH_SHORT).show();
+    		int room_num = v.getId();
+    		Toast.makeText(MapsExample.this,"Debug: Room Button clicked for room number: "+room_num,
+                    Toast.LENGTH_SHORT).show();
+    		Intent i = new Intent(getApplicationContext(), StateRoom.class);
+    		i.putExtra("room_num",room_num);
+    		startActivity(i);
+    		 
     	}
 
     }
