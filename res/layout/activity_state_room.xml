@@ -25,20 +25,27 @@
         android:layout_marginTop="110dp"
         android:maxLines="100"
         android:scrollbars="vertical"
-        android:text="@string/hello_world"
-         />
+        android:text="@string/hello_world" />
 
     <EditText
         android:id="@+id/newComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/stateroominfo"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="44dp"
         android:ems="10"
-        android:hint="Insert New Comment" >
+        android:hint="Insert New Comment" />
 
-        <requestFocus />
-    </EditText>
+    <Button
+        android:id="@+id/submitComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Button"
+        android:hint="Submit"
+        android:onClick="newComment" />
 
 </RelativeLayout>
