@@ -94,7 +94,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		myData = JSONtiem.getJSONFromUrl(myUrl);
 		Log.v(TAG, myData.toString());
 		db.insertSQL(Username, Password);
-		Intent intent = new Intent(this, DeutschMain.class);
+		Intent intent = new Intent(this, EnglishMain.class);
 		startActivity(intent);
 	}
 		

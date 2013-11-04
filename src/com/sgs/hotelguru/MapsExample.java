@@ -39,7 +39,7 @@ public class MapsExample extends Activity {
     //Button QM2_12002;
     //Button QM2_12081;
     Button buttonZoomIn;
-    final float Zoom_max = 4f;
+    final float Zoom_max = 8f;
     final float Zoom_min = 1f;
     private static final String TAG = "Die Karte";
     myDatabase db;
@@ -288,6 +288,8 @@ public class MapsExample extends Activity {
     		Toast.makeText(MapsExample.this,"Debug: Room Button clicked for room number: "+room_num,
                     Toast.LENGTH_SHORT).show();
     		Intent i = new Intent(getApplicationContext(), StateRoom.class);
+    		//lets get the buttonstruct data for this button here
+    		i.putExtra("GlobalShipName", GlobalShipName);
     		i.putExtra("room_num",room_num);
     		startActivity(i);
     		 
