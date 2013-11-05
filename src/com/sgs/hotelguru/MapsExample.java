@@ -1,19 +1,21 @@
 package com.sgs.hotelguru;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
-import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -21,15 +23,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.view.ViewGroup.LayoutParams;
 
 
 
@@ -60,7 +59,7 @@ public class MapsExample extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_example);
-        
+
     	Bundle extras = getIntent().getExtras();
     	if (extras != null) {
     	    GlobalCruiseLine = extras.getString("GlobalCruiseLine");
@@ -78,8 +77,9 @@ public class MapsExample extends Activity {
     	String[] tokens = GlobalShipDeck.split(delims);
     	int myDeck = Integer.parseInt(tokens[1]);
         
+    	//old code for loading deck images dynamically from assets folder(bad too much space)
         //ImageView img = (ImageView) findViewById(R.id.imageView1);
-        ImageView img = new ImageView(this);
+        /*ImageView img = new ImageView(this);
         RelativeLayout.LayoutParams vp = new RelativeLayout.LayoutParams(
 	            RelativeLayout.LayoutParams.MATCH_PARENT,
 	            RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -100,8 +100,58 @@ public class MapsExample extends Activity {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+    	//deck images will load from sdcard, if it doesnt exist, it will download from server and store in sdcard
+    	ImageView img = new ImageView(this);
+    	RelativeLayout.LayoutParams vp = new RelativeLayout.LayoutParams(
+	            RelativeLayout.LayoutParams.MATCH_PARENT,
+	            RelativeLayout.LayoutParams.MATCH_PARENT);
+        img.setLayoutParams(vp);
+        //lets see if the image has already been cached in the sdcard
+        File extStore = Environment.getExternalStorageDirectory();
+        File myFile = new File(extStore.getAbsolutePath() + "/HotelGuru/img/"+GlobalCruiseLine+"/"+GlobalShipName,"deck "+myDeck+".jpg");
 
+        if(!myFile.exists()){
+        	try {
+        		myFile.createNewFile();
+        		Log.v("dynamic_deck", "File Doesnt Exist");
+
+                String workUrl = ("http://hotelguru.no-ip.org/img/"+URLEncoder.encode(GlobalCruiseLine,"UTF-8")+"/"+URLEncoder.encode(GlobalShipName,"UTF-8")+"/"+URLEncoder.encode("deck ","UTF-8")+myDeck+".jpg");
+                workUrl= workUrl.replaceAll("\\+", "%20");
+                URL url = new URL(workUrl);
+                InputStream input = url.openStream();
+                    //The sdcard directory e.g. '/sdcard' can be used directly, or 
+                    //more safely abstracted with getExternalStorageDirectory()
+                	Log.v("mapsexample", "url opened and creating outputstream");
+                    File storagePath = Environment.getExternalStorageDirectory();
+                    OutputStream output = new FileOutputStream (myFile);
+
+                    	Log.v("beginning read from url", "inside nested try before buffer set");
+                        byte[] buffer = new byte[1028];
+                        int bytesRead = 0;
+                        while ((bytesRead = input.read(buffer, 0, buffer.length)) >= 0) {
+                            output.write(buffer, 0, bytesRead);
+                            Log.v("deck image buffer", buffer.toString());
+                        }
+                        output.close();
+
+                    input.close();
+                }
+             catch (Exception e) {
+            	 Log.e("MapsExample Dynamic Deck Plans Exception", "Something went wrong transferring the image to the sd card with error " + e);
+            }
+        	
+        }
+        	//file exists for sure here lets open it and set the img view to it
+        	File deckImg = new File(extStore.getAbsolutePath()+"/HotelGuru/img/"+GlobalCruiseLine+"/"+GlobalShipName,"deck "+myDeck+".jpg");  
+        	Bitmap bitmap = BitmapFactory.decodeFile(deckImg.getAbsolutePath());
+        	img.setImageBitmap(bitmap);
+        	 DisplayMetrics dm1 = getResources().getDisplayMetrics();
+     		float Simgheight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 420, dm1);
+             vp.height = (int) Simgheight;
+             mainView.addView(img,vp);
+        
+    	
 
         //dynamically create buttons here
     	
