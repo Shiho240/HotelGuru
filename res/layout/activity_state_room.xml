@@ -24,8 +24,7 @@
         android:layout_below="@+id/stateroominfo"
         android:layout_marginTop="110dp"
         android:maxLines="100"
-        android:scrollbars="vertical"
-        android:text="@string/hello_world" />
+        android:scrollbars="vertical" />
 
     <EditText
         android:id="@+id/newComment"

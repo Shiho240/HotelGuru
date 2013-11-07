@@ -3,6 +3,8 @@ package com.sgs.hotelguru;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
@@ -47,9 +49,33 @@ public class StateRoom extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JSONObject myData;
-		myData = JSONtiem.getJSONFromUrl(myUrl);
-		Log.v("stateroom", myData.toString());
+		
+		//Log.v("stateroom", myData.toString());
+		JSONObject myCData;
+		myCData = JSONtiem.getJSONFromUrl(myUrl);
+		JSONArray myComments;
+		try {
+			
+			if((myCData.getInt("success"))==1)
+			{
+				myComments = myCData.getJSONArray("posts");
+				for(int i=0;i<myComments.length();i++)
+				{
+					JSONObject workComment = myComments.getJSONObject(i);
+					commentsIn.append(workComment.getString("Comment")+"-"+workComment.getString("Username")+'\n'+'\n');
+				}
+				
+			}
+			else
+			{
+				commentsIn.setText("No one has commented on this stateroom yet, be the first to do so!");
+			}
+			
+			
+		} catch (JSONException e) {
+			Log.v("JSONException", e.toString());
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,9 +99,6 @@ public class StateRoom extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JSONObject myData;
-		myData = JSONtiem.getJSONFromUrl(myUrl);
-		Log.v("stateroom", myData.toString());
 		
 		
 	}
