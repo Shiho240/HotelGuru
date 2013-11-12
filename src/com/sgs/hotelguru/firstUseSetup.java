@@ -59,8 +59,17 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		else
 		{
 			//NORMAL MODE CONTINUE TO MAIN ACTIVITY
+			SharedPreferences myLocale = getSharedPreferences(PREFS_NAME,0);
+			if(myLocale.getString("Locale","EN_US")=="EN_US")
+			{
 			Intent intent = new Intent(this, EnglishMain.class);
 			startActivity(intent);
+			}
+			else
+			{
+				Intent intent = new Intent(this, DeutschMain.class);
+				startActivity(intent);
+			}
 			//if locale == DE proceed to German side of the app
 			//else if locale is english proceed to english side of the app 
 		}
@@ -94,8 +103,18 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		myData = JSONtiem.getJSONFromUrl(myUrl);
 		Log.v(TAG, myData.toString());
 		db.insertSQL(Username, Password);
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
+		settings.edit().putString("Locale", myLocale);
+		
+		if(myLocale=="EN_US"){
 		Intent intent = new Intent(this, EnglishMain.class);
 		startActivity(intent);
+		}
+		else
+		{
+			Intent intent = new Intent(this, DeutschMain.class);
+			startActivity(intent);
+		}
 	}
 		
 }
