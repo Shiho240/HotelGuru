@@ -96,7 +96,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		String Username = uidField.getText().toString();
 		String Password = passwordField.getText().toString();
 		Log.v(TAG, "Calling a database insert with Username and password = "+Username+" "+Password);
-		String pw_hash = BCrypt.hashpw(Password, BCrypt.gensalt());
+		String pw_hash = BCrypt.hashpw(Password, BCrypt.gensalt(4));
 		//ITS JSON TIEM!!
 		JSONObj JSONtiem = new JSONObj();
 		String myUrl = "http://hotelguru.no-ip.org/scripts/UserCheck.php?username="+URLEncoder.encode(Username, "UTF-8")+"&&password="+URLEncoder.encode(pw_hash, "UTF-8");
@@ -118,31 +118,51 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 			                Toast.LENGTH_LONG).show();
 					SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
 					settings.edit().putBoolean("firstBoot", true).commit();
-					finish();
-					startActivity(getIntent());
+					recreate();//kills current activity and restarts it so we can have user retry to authenticate
+					
+				}
+				else{
+					Log.v(TAG, myData.toString());
+					db.insertSQL(Username, pw_hash);
+					SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
+					settings.edit().putString("Locale", myLocale);
+					Toast.makeText(firstUseSetup.this,"Username successfully registered/ User authenticated",
+			                Toast.LENGTH_LONG).show();
+					if(myLocale=="EN_US"){
+					Intent intent = new Intent(this, EnglishMain.class);
+					startActivity(intent);
+					}
+					else
+					{
+						Intent intent = new Intent(this, DeutschMain.class);
+						startActivity(intent);
+					}
 				}
 				
+			}
+			else{
+				Log.v(TAG, myData.toString());
+				db.insertSQL(Username, pw_hash);
+				SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
+				settings.edit().putString("Locale", myLocale);
+				Toast.makeText(firstUseSetup.this,"Username successfully registered/ User authenticated",
+		                Toast.LENGTH_LONG).show();
+				if(myLocale=="EN_US"){
+				Intent intent = new Intent(this, EnglishMain.class);
+				startActivity(intent);
+				}
+				else
+				{
+					Intent intent = new Intent(this, DeutschMain.class);
+					startActivity(intent);
+				}
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			Log.v("JSONException", e.toString());
 			e.printStackTrace();
 		}
-		Log.v(TAG, myData.toString());
-		db.insertSQL(Username, pw_hash);
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
-		settings.edit().putString("Locale", myLocale);
-		Toast.makeText(firstUseSetup.this,"Username successfully registered/ User authenticated",
-                Toast.LENGTH_LONG).show();
-		if(myLocale=="EN_US"){
-		Intent intent = new Intent(this, EnglishMain.class);
-		startActivity(intent);
-		}
-		else
-		{
-			Intent intent = new Intent(this, DeutschMain.class);
-			startActivity(intent);
-		}
+		
 	}
 		
 }
