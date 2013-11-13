@@ -4,6 +4,8 @@ package com.sgs.hotelguru;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -18,10 +20,10 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class firstUseSetup extends Activity implements OnItemSelectedListener {
 	public myDatabase db;
-	private Sicherheit meineSicherheit;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -93,16 +95,41 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		EditText passwordField = (EditText) findViewById(R.id.userPass);
 		String Username = uidField.getText().toString();
 		String Password = passwordField.getText().toString();
-		meineSicherheit = new Sicherheit("Starlite");//Create new security
 		Log.v(TAG, "Calling a database insert with Username and password = "+Username+" "+Password);
-		String encrypted = meineSicherheit.encrypt(Password);
+		String pw_hash = BCrypt.hashpw(Password, BCrypt.gensalt());
 		//ITS JSON TIEM!!
 		JSONObj JSONtiem = new JSONObj();
-		String myUrl = "http://hotelguru.no-ip.org/scripts/UserCheck.php?username="+URLEncoder.encode(Username, "UTF-8")+"&&password="+URLEncoder.encode(encrypted, "UTF-8");
+		String myUrl = "http://hotelguru.no-ip.org/scripts/UserCheck.php?username="+URLEncoder.encode(Username, "UTF-8")+"&&password="+URLEncoder.encode(pw_hash, "UTF-8");
 		JSONObject myData;
 		myData = JSONtiem.getJSONFromUrl(myUrl);
+		Log.v("jsontiem",myData.toString());
+		try {
+			if((myData.getInt("success"))==0)
+			{
+				String doubleCheck = "http://hotelguru.no-ip.org/scripts/doubleCheck.php?username="+URLEncoder.encode(Username, "UTF-8")+"&&password="+URLEncoder.encode(pw_hash, "UTF-8");
+				Log.v("security key check", "encrypted password= "+pw_hash);
+				myData = JSONtiem.getJSONFromUrl(doubleCheck);
+				JSONArray myUserData;
+				myUserData = myData.getJSONArray("User");
+				JSONObject passcomp = myUserData.getJSONObject(0);
+				if(!(BCrypt.checkpw(Password, passcomp.getString("Password"))))
+				{
+					Toast.makeText(firstUseSetup.this,"Incorrect Username/Password Combination, Please try Again. If you are attempting to register this User, it has already been taken",
+			                Toast.LENGTH_LONG).show();
+					SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
+					settings.edit().putBoolean("firstBoot", true).commit();
+					finish();
+					startActivity(getIntent());
+				}
+				
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			Log.v("JSONException", e.toString());
+			e.printStackTrace();
+		}
 		Log.v(TAG, myData.toString());
-		db.insertSQL(Username, Password);
+		db.insertSQL(Username, pw_hash);
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
 		settings.edit().putString("Locale", myLocale);
 		
