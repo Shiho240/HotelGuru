@@ -211,7 +211,7 @@ public class MapsExample extends Activity {
 
        @Override
        public void onClick(View v) {
-        zoom_out(new PointF(350,400));
+        zoom_out(new PointF(myWorkX,myWorkY));
        }
       });/*
       buttonNormal.setOnClickListener(new OnClickListener() {

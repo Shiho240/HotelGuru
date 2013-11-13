@@ -148,4 +148,30 @@ public ArrayList<ButtonStruct> getButtonCoords(String myShip, int myDeck){
 	Log.v("GETBUTTONCOORDS", "about to return buttondata");
 	return myButtonData;
 }
+public shipStruct getShipData(String myShip){
+	shipStruct myShipData = new shipStruct();
+	SQLiteDatabase db = getReadableDatabase();
+	String[] selargs = new String[1];
+	selargs[0] = myShip;
+	Cursor myCursor = db.rawQuery("SELECT Ship_Name, Ship_Year, Cruise_Line, Capacity, Ship_Decks, Ship_Registry, Ship_Speed, Ship_Length FROM Ships WHERE Ship_Name=?",selargs);
+	myCursor.moveToFirst();
+	String myShipName = myCursor.getString(0);
+	myShipData.setShip_Name(myShipName);
+	int myShipYear = myCursor.getInt(1);
+	myShipData.setShip_Year(myShipYear);
+	String myCruiseLine = myCursor.getString(2);
+	myShipData.setCruise_Line(myCruiseLine);
+	int myCap = myCursor.getInt(3);
+	myShipData.setCapacity(myCap);
+	int myDecks = myCursor.getInt(4);
+	myShipData.setShip_Decks(myDecks);
+	String myRegistry = myCursor.getString(5);
+	myShipData.setShip_Registry(myRegistry);
+	int mySpeed = myCursor.getInt(6);
+	myShipData.setShip_Speed(mySpeed);
+	int myLength = myCursor.getInt(7);
+	myShipData.setShip_Length(myLength);
+	return myShipData;
+	
+}
 }

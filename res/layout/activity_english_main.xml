@@ -8,23 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".EnglishMain" >
 
-    <Button
-        android:id="@+id/SubmitMapSelect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"
-        android:text="Submit" 
-        android:onClick="onSpinnerSubmit"/>
-
-    <Spinner
-        android:id="@+id/CruiseLineSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <Spinner
         android:id="@+id/DeckSelectSpinner"
         android:layout_width="wrap_content"
@@ -38,5 +21,39 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/CruiseLineSpinner"
         android:layout_below="@+id/CruiseLineSpinner" />
+
+    <Spinner
+        android:id="@+id/CruiseLineSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/SubmitMapSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick="onSpinnerSubmit"
+        android:text="Submit" />
+
+    <ImageView
+        android:id="@+id/ShipIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/DeckSelectSpinner"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ShipData" />
+
+    <TextView
+        android:id="@+id/ShipData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ShipIcon"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SubmitMapSelect"
+        android:layout_marginTop="18dp" />
 
 </RelativeLayout>

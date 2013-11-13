@@ -132,7 +132,8 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		db.insertSQL(Username, pw_hash);
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
 		settings.edit().putString("Locale", myLocale);
-		
+		Toast.makeText(firstUseSetup.this,"Username successfully registered/ User authenticated",
+                Toast.LENGTH_LONG).show();
 		if(myLocale=="EN_US"){
 		Intent intent = new Intent(this, EnglishMain.class);
 		startActivity(intent);

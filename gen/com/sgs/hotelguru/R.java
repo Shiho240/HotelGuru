@@ -28,25 +28,26 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int CruiseLineSpinner=0x7f090001;
-        public static final int DeckLayout=0x7f090004;
-        public static final int DeckSelectSpinner=0x7f090002;
-        public static final int ShipSelectSpinner=0x7f090003;
-        public static final int SubmitMapSelect=0x7f090000;
-        public static final int action_settings=0x7f090012;
-        public static final int imageView1=0x7f090005;
-        public static final int localeSpinner=0x7f090011;
-        public static final int newComment=0x7f09000b;
-        public static final int stateroomComments=0x7f09000a;
-        public static final int stateroominfo=0x7f090009;
-        public static final int submitComment=0x7f09000c;
-        public static final int toExampleMap=0x7f09000e;
-        public static final int userName=0x7f09000f;
-        public static final int userPass=0x7f090010;
-        public static final int welcomeDE=0x7f09000d;
-        public static final int zoom_Layout=0x7f090006;
-        public static final int zoom_in=0x7f090007;
-        public static final int zoom_out=0x7f090008;
+        public static final int CruiseLineSpinner=0x7f090002;
+        public static final int DeckLayout=0x7f090006;
+        public static final int DeckSelectSpinner=0x7f090000;
+        public static final int ShipData=0x7f090005;
+        public static final int ShipIcon=0x7f090004;
+        public static final int ShipSelectSpinner=0x7f090001;
+        public static final int SubmitMapSelect=0x7f090003;
+        public static final int action_settings=0x7f090013;
+        public static final int localeSpinner=0x7f090012;
+        public static final int newComment=0x7f09000c;
+        public static final int stateroomComments=0x7f09000b;
+        public static final int stateroominfo=0x7f09000a;
+        public static final int submitComment=0x7f09000d;
+        public static final int toExampleMap=0x7f09000f;
+        public static final int userName=0x7f090010;
+        public static final int userPass=0x7f090011;
+        public static final int welcomeDE=0x7f09000e;
+        public static final int zoom_Layout=0x7f090007;
+        public static final int zoom_in=0x7f090008;
+        public static final int zoom_out=0x7f090009;
     }
     public static final class layout {
         public static final int activity_english_main=0x7f030000;
