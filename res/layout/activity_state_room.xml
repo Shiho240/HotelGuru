@@ -9,43 +9,47 @@
     tools:context=".StateRoom" android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true" >
 
-    <TextView
-        android:id="@+id/stateroominfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-    <TextView
-        android:id="@+id/stateroomComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/newComment"
-        android:layout_alignLeft="@+id/stateroominfo"
-        android:layout_alignRight="@+id/newComment"
-        android:layout_below="@+id/stateroominfo"
-        android:layout_marginTop="110dp"
-        android:maxLines="100"
-        android:scrollbars="vertical" />
-
-    <EditText
-        android:id="@+id/newComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/stateroominfo"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="44dp"
-        android:ems="10"
-        android:hint="Insert New Comment" />
-
     <Button
         android:id="@+id/submitComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Button"
         android:hint="Submit"
-        android:onClick="newComment" />
+        android:onClick="newComment"
+        android:text="Submit" />
+
+    <TextView
+        android:id="@+id/stateroominfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="52dp"
+        android:text="@string/hello_world" />
+
+    <ImageView
+        android:id="@+id/StateRoomIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/newComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ratingBar1"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Insert New Comment" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submitComment"
+        android:layout_centerHorizontal="true"
+        android:numStars="5" />
 
 </RelativeLayout>

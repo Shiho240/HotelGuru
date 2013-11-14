@@ -29,39 +29,43 @@ public final class R {
     }
     public static final class id {
         public static final int CruiseLineSpinner=0x7f090002;
-        public static final int DeckLayout=0x7f090006;
+        public static final int DeckLayout=0x7f090009;
         public static final int DeckSelectSpinner=0x7f090000;
         public static final int ShipData=0x7f090005;
         public static final int ShipIcon=0x7f090004;
         public static final int ShipSelectSpinner=0x7f090001;
+        public static final int StateRoomIcon=0x7f09000f;
         public static final int SubmitMapSelect=0x7f090003;
-        public static final int action_settings=0x7f090013;
-        public static final int localeSpinner=0x7f090012;
-        public static final int newComment=0x7f09000c;
-        public static final int stateroomComments=0x7f09000b;
-        public static final int stateroominfo=0x7f09000a;
+        public static final int action_settings=0x7f090015;
+        public static final int localeSpinner=0x7f090014;
+        public static final int newComment=0x7f090010;
+        public static final int ratingBar1=0x7f090011;
+        public static final int stateroominfo=0x7f09000e;
         public static final int submitComment=0x7f09000d;
-        public static final int toExampleMap=0x7f09000f;
-        public static final int userName=0x7f090010;
-        public static final int userPass=0x7f090011;
-        public static final int welcomeDE=0x7f09000e;
-        public static final int zoom_Layout=0x7f090007;
-        public static final int zoom_in=0x7f090008;
-        public static final int zoom_out=0x7f090009;
+        public static final int textView1=0x7f090006;
+        public static final int textView2=0x7f090007;
+        public static final int textView3=0x7f090008;
+        public static final int userName=0x7f090012;
+        public static final int userPass=0x7f090013;
+        public static final int zoom_Layout=0x7f09000a;
+        public static final int zoom_in=0x7f09000b;
+        public static final int zoom_out=0x7f09000c;
     }
     public static final class layout {
         public static final int activity_english_main=0x7f030000;
-        public static final int activity_maps_example=0x7f030001;
-        public static final int activity_state_room=0x7f030002;
-        public static final int deutsch_main=0x7f030003;
-        public static final int firstuse=0x7f030004;
+        public static final int activity_maps_deutsch=0x7f030001;
+        public static final int activity_maps_example=0x7f030002;
+        public static final int activity_state_room=0x7f030003;
+        public static final int deutsch_main=0x7f030004;
+        public static final int firstuse=0x7f030005;
     }
     public static final class menu {
         public static final int deutsch_main=0x7f080000;
         public static final int english_main=0x7f080001;
         public static final int main=0x7f080002;
-        public static final int maps_example=0x7f080003;
-        public static final int state_room=0x7f080004;
+        public static final int maps_deutsch=0x7f080003;
+        public static final int maps_example=0x7f080004;
+        public static final int state_room=0x7f080005;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -71,6 +75,7 @@ public final class R {
         public static final int submitHint=0x7f060007;
         public static final int title_activity_deutsch_main=0x7f060008;
         public static final int title_activity_english_main=0x7f06000c;
+        public static final int title_activity_maps_deutsch=0x7f06000e;
         public static final int title_activity_maps_example=0x7f060009;
         public static final int title_activity_state_room=0x7f06000d;
         public static final int title_section1=0x7f060002;

@@ -26,8 +26,8 @@
         android:id="@+id/CruiseLineSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/SubmitMapSelect"
+        android:layout_alignParentTop="true" />
 
     <Button
         android:id="@+id/SubmitMapSelect"
@@ -42,8 +42,8 @@
         android:id="@+id/ShipIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/DeckSelectSpinner"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ShipData" />
 
@@ -55,5 +55,38 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/SubmitMapSelect"
         android:layout_marginTop="18dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/CruiseLineSpinner"
+        android:layout_alignLeft="@+id/ShipData"
+        android:layout_alignTop="@+id/CruiseLineSpinner"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/CruiseLineSpinner"
+        android:text="Select a Cruise Line"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ShipSelectSpinner"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignTop="@+id/ShipSelectSpinner"
+        android:layout_marginTop="18dp"
+        android:text="Select a Cruise Ship"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/DeckSelectSpinner"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/DeckSelectSpinner"
+        android:text="Select a Ship Deck"
+        android:textStyle="bold" />
 
 </RelativeLayout>

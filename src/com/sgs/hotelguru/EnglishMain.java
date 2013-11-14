@@ -8,12 +8,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import android.os.Bundle;
-import android.os.Environment;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -37,6 +37,7 @@ public class EnglishMain extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_english_main);
 		db = new myDatabase(getApplicationContext());
+		this.setTitle("Welcome Back "+db.getUser()+"!");
 		this.SetCruiseLine();
 		
 	}

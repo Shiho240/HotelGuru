@@ -22,15 +22,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class firstUseSetup extends Activity implements OnItemSelectedListener {
+public class firstUseSetup extends Activity {
 	public myDatabase db;
+	Spinner spinner;
+	public String myLocale = "EN_US"; //default locale is EN_US
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);	
 		setContentView(R.layout.firstuse);
-		Spinner spinner = (Spinner) findViewById(R.id.localeSpinner);
+		spinner = (Spinner) findViewById(R.id.localeSpinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 		        R.array.locale_array, android.R.layout.simple_spinner_item);
@@ -38,6 +40,31 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+	        @Override
+	        public void onItemSelected(AdapterView<?> parent,
+	                View view, int pos, long id) {
+	        	String English = "English";
+	        	String compare = (parent.getItemAtPosition(pos).toString());
+	        	Log.v("SPINNER LOCALE", "COMPARE "+English+" to "+compare);
+	           if(compare.equals(English))
+	           {
+	        	   myLocale = "EN_US";
+	           }
+	           else
+	           {
+	        	   myLocale = "DE_DE";
+	           }
+	           Log.v("SPINNER LOCALE",myLocale);
+	        }
+
+	        @Override
+	        public void onNothingSelected(AdapterView<?> arg0) {
+	            // TODO Auto-generated method stub
+
+	        }
+	    });
 		db = new myDatabase(this);
 		//im lazy sue me.... this is totally bad, should use async call for http.
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -46,7 +73,6 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		firstuse();
 	}
 	public static final String PREFS_NAME = "HotelGuru_Prefs_File";
-	public String myLocale = "EN_US"; //default locale is EN_US
 	private static final String TAG = "FirstRun";
 	public void firstuse(){
 		SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
@@ -62,6 +88,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 		{
 			//NORMAL MODE CONTINUE TO MAIN ACTIVITY
 			SharedPreferences myLocale = getSharedPreferences(PREFS_NAME,0);
+			Log.v("NORMAL MODE", myLocale.getString("Locale", "EN_US"));
 			if(myLocale.getString("Locale","EN_US")=="EN_US")
 			{
 			Intent intent = new Intent(this, EnglishMain.class);
@@ -76,21 +103,10 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 			//else if locale is english proceed to english side of the app 
 		}
 	}
-	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3) {
-		// TODO Auto-generated method stub
-		myLocale = (String) arg0.getItemAtPosition(arg2);
-		
-	}
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	public void onSubmit(View view) throws UnsupportedEncodingException {
 	    // Do something in response to button click
-		Log.v(TAG, "Submit button pressed");
+		Log.v(TAG, "Submit button pressed with locale "+myLocale);
 		EditText uidField = (EditText) findViewById(R.id.userName);
 		EditText passwordField = (EditText) findViewById(R.id.userPass);
 		String Username = uidField.getText().toString();
@@ -125,7 +141,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 					Log.v(TAG, myData.toString());
 					db.insertSQL(Username, pw_hash);
 					SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
-					settings.edit().putString("Locale", myLocale);
+					settings.edit().putString("Locale", myLocale).commit();
 					Toast.makeText(firstUseSetup.this,"Username successfully registered/ User authenticated",
 			                Toast.LENGTH_LONG).show();
 					if(myLocale=="EN_US"){
@@ -144,7 +160,7 @@ public class firstUseSetup extends Activity implements OnItemSelectedListener {
 				Log.v(TAG, myData.toString());
 				db.insertSQL(Username, pw_hash);
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
-				settings.edit().putString("Locale", myLocale);
+				settings.edit().putString("Locale", myLocale).commit();
 				Toast.makeText(firstUseSetup.this,"Username successfully registered/ User authenticated",
 		                Toast.LENGTH_LONG).show();
 				if(myLocale=="EN_US"){

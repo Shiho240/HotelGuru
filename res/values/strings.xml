@@ -15,5 +15,6 @@
     <string name="zoom_in">OMG ZOOM IN</string>
     <string name="title_activity_english_main">EnglishMain</string>
     <string name="title_activity_state_room">StateRoom</string>
+    <string name="title_activity_maps_deutsch">MapsDeutsch</string>
 
 </resources>

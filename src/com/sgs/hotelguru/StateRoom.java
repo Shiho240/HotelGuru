@@ -7,14 +7,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StateRoom extends Activity {
 
@@ -36,11 +38,11 @@ public class StateRoom extends Activity {
 		setTitle("Stateroom "+room_num);
 		myStateRoom = db.getRoomData(GlobalShipName, room_num);
 		TextView room_out = (TextView) findViewById(R.id.stateroominfo);
-		room_out.setText("CruiseLine: "+myStateRoom.getCruiseLine()+'\n'+"Ship Name: "+GlobalShipName+'\n'+"Deck: "+myStateRoom.getRoomDeck()+'\n'+"Room Number: "+room_num+'\n'+"Room Type: "+ myStateRoom.getRoomType()+'\n'+ "Room Description: "+myStateRoom.getRoomDesc());
-		TextView commentsIn = (TextView) findViewById(R.id.stateroomComments);
+		room_out.setMovementMethod(new ScrollingMovementMethod());
+		room_out.setText(Html.fromHtml("<b> Cruise Line: </b>"+myStateRoom.getCruiseLine()+"<br/><br/>"+"<b> Ship Name: </b>"+GlobalShipName+"<br/><br/>"+"<b> Deck: </b>"+myStateRoom.getRoomDeck()+"<br/><br/>"+"<b>Room Number: </b>"+room_num+"<br/><br/>"+"<b> Room Type: </b>"+ myStateRoom.getRoomType()+"<br/><br/>"+ "<b> Room Description: </b>"+myStateRoom.getRoomDesc()+"<br/><br/><b>Comments:</b><br/>"));
 		//get comments from external database here
-		//make scrollable
-		commentsIn.setMovementMethod(new ScrollingMovementMethod());
+				//make scrollable
+		
 		JSONObj JSONtiem = new JSONObj();
 		String myUrl = null;
 		try {
@@ -62,13 +64,13 @@ public class StateRoom extends Activity {
 				for(int i=0;i<myComments.length();i++)
 				{
 					JSONObject workComment = myComments.getJSONObject(i);
-					commentsIn.append(workComment.getString("Comment")+"-"+workComment.getString("Username")+'\n'+'\n');
+					room_out.append(Html.fromHtml(workComment.getString("Comment")+"-<i>"+workComment.getString("Username")+"</i><br/><br/>"));
 				}
 				
 			}
 			else
 			{
-				commentsIn.setText("No one has commented on this stateroom yet, be the first to do so!");
+				room_out.append(Html.fromHtml("<b> No one has commented on this stateroom yet, be the first to do so! </b>"));
 			}
 			
 			
@@ -95,6 +97,23 @@ public class StateRoom extends Activity {
 		String myUrl = null;
 		try {
 			myUrl = "http://hotelguru.no-ip.org/scripts/setComments.php?shipname="+URLEncoder.encode(GlobalShipName, "UTF-8")+"&&roomnum="+URLEncoder.encode(Integer.toString(room_num), "UTF-8")+"&&message="+URLEncoder.encode(Comment, "UTF-8")+"&&username="+URLEncoder.encode(db.getUser(), "UTF-8");
+			JSONObject myData = JSONtiem.getJSONFromUrl(myUrl);
+			try {
+				if((myData.getInt("success"))==1)
+				{
+					newComment.setText("");
+					newComment.setSelected(false);
+					recreate();//kills current activity and restarts it so we can update with new user comment
+				}
+				else
+				{
+					Toast.makeText(StateRoom.this,"An error occured while posting a comment. Please Try Again Later. If you already have posted a comment for this room with this username, you may not post again.",
+			                Toast.LENGTH_LONG).show();
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
