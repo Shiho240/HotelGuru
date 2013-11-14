@@ -109,10 +109,12 @@ public class MapsExample extends Activity {
         img.setLayoutParams(vp);
         //lets see if the image has already been cached in the sdcard
         File extStore = Environment.getExternalStorageDirectory();
+        File myDurr = new File(extStore.getAbsolutePath()+"/HotelGuru/img/"+GlobalCruiseLine+"/"+GlobalShipName);
         File myFile = new File(extStore.getAbsolutePath() + "/HotelGuru/img/"+GlobalCruiseLine+"/"+GlobalShipName,"deck "+myDeck+".jpg");
-
+       
         if(!myFile.exists()){
         	try {
+        		myDurr.mkdirs();
         		myFile.createNewFile();
         		Log.v("dynamic_deck", "File Doesnt Exist");
 

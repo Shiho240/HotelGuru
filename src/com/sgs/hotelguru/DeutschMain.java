@@ -125,10 +125,12 @@ public void SetShipDeck(String myShip){
 			ImageView shipIcon = (ImageView) findViewById(R.id.ShipIcon);
 			 //lets see if the image has already been cached in the sdcard
 	        File extStore = Environment.getExternalStorageDirectory();
+	        File myDurr = new File(extStore.getAbsolutePath()+"/HotelGuru/img/"+GlobalCruiseLine+"/"+GlobalShipName);
 	        File myFile = new File(extStore.getAbsolutePath() + "/HotelGuru/img/"+GlobalCruiseLine+"/"+GlobalShipName,GlobalShipName+".png");
-
+	       
 	        if(!myFile.exists()){
 	        	try {
+	        		myDurr.mkdirs();
 	        		myFile.createNewFile();
 	        		Log.v("dynamic_ship_icon", "File Doesnt Exist");
 

@@ -34,12 +34,12 @@ public final class R {
         public static final int ShipData=0x7f090005;
         public static final int ShipIcon=0x7f090004;
         public static final int ShipSelectSpinner=0x7f090001;
-        public static final int StateRoomIcon=0x7f09000f;
         public static final int SubmitMapSelect=0x7f090003;
         public static final int action_settings=0x7f090015;
+        public static final int gallery1=0x7f090011;
         public static final int localeSpinner=0x7f090014;
-        public static final int newComment=0x7f090010;
-        public static final int ratingBar1=0x7f090011;
+        public static final int newComment=0x7f09000f;
+        public static final int ratingBar1=0x7f090010;
         public static final int stateroominfo=0x7f09000e;
         public static final int submitComment=0x7f09000d;
         public static final int textView1=0x7f090006;

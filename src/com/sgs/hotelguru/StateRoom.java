@@ -13,8 +13,11 @@ import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +42,7 @@ public class StateRoom extends Activity {
 		myStateRoom = db.getRoomData(GlobalShipName, room_num);
 		TextView room_out = (TextView) findViewById(R.id.stateroominfo);
 		room_out.setMovementMethod(new ScrollingMovementMethod());
-		room_out.setText(Html.fromHtml("<b> Cruise Line: </b>"+myStateRoom.getCruiseLine()+"<br/><br/>"+"<b> Ship Name: </b>"+GlobalShipName+"<br/><br/>"+"<b> Deck: </b>"+myStateRoom.getRoomDeck()+"<br/><br/>"+"<b>Room Number: </b>"+room_num+"<br/><br/>"+"<b> Room Type: </b>"+ myStateRoom.getRoomType()+"<br/><br/>"+ "<b> Room Description: </b>"+myStateRoom.getRoomDesc()+"<br/><br/><b>Comments:</b><br/>"));
+		room_out.setText(Html.fromHtml("<b> Cruise Line: </b>"+myStateRoom.getCruiseLine()+"<br/><br/>"+"<b> Ship Name: </b>"+GlobalShipName+"<br/><br/>"+"<b> Deck: </b>"+myStateRoom.getRoomDeck()+"<br/><br/>"+"<b>Room Number: </b>"+room_num+"<br/><br/>"+"<b> Room Type: </b>"+ myStateRoom.getRoomType()+"<br/><br/>"+"<b> Room Occupancy: </b>"+myStateRoom.getOccupancy()+"<br/><br/>"+"<b>Room Size: </b>"+myStateRoom.getRoomSize()+" Square Feet<br/><br/>"+"<b> Balcony Size: </b>"+myStateRoom.getBalconySize()+" Square Feet<br/><br/>"+"<b> Room Description: </b>"+myStateRoom.getRoomDesc()+"<br/><br/><b> Special Notes: </b>"+myStateRoom.getRoomSpecial()+"<br/><br/><b>Comments:</b><br/>"));
 		//get comments from external database here
 				//make scrollable
 		
@@ -78,7 +81,22 @@ public class StateRoom extends Activity {
 			Log.v("JSONException", e.toString());
 			e.printStackTrace();
 		}
+		final RatingBar minimumRating = (RatingBar)findViewById(R.id.ratingBar1);
+	    minimumRating.setOnTouchListener(new OnTouchListener()
+	    { 
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				float touchPositionX = event.getX();
+	            float width = minimumRating.getWidth();
+	            float starsf = (touchPositionX / width) * 5.0f;
+	            int stars = (int)starsf + 1;
+	            minimumRating.setRating(stars);
+	            return true; 
+			} 
+	    });
 	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

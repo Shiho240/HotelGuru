@@ -42,7 +42,7 @@ public String getUser() {
 public roomDataStruct getRoomData(String shipName, int roomNum)
 {
 	SQLiteDatabase db = getReadableDatabase();
-	Cursor myCursor = db.query("Rooms", new String[]{"Room_Num", "Room_Type", "Room_Desc", "Room_Rating", "Room_Deck", "Ship_Name", "Cruise_Line", "Room_Interior", "Room_Exterior"}, "Room_Num="+roomNum,null,null,null,null);
+	Cursor myCursor = db.query("Rooms", new String[]{"Room_Num", "Room_Type", "Room_Desc", "Room_Rating", "Room_Deck", "Ship_Name", "Cruise_Line", "Room_Interior", "Room_Exterior", "Occupancy", "Special", "Room_Size", "Balcony_Size"}, "Room_Num="+roomNum,null,null,null,null);
 	myCursor.moveToFirst();
 	roomDataStruct myRoomData = new roomDataStruct();
 	int myRoomNum = myCursor.getInt(0);
@@ -64,6 +64,14 @@ public roomDataStruct getRoomData(String shipName, int roomNum)
 	myRoomData.setRoomInt(myRoomInt);
 	String myRoomExt = myCursor.getString(8);
 	myRoomData.setRoomExt(myRoomExt);
+	int myRoomOcc = myCursor.getInt(9);
+	myRoomData.setOccupancy(myRoomOcc);
+	String myRoomSpec = myCursor.getString(10);
+	myRoomData.setRoomSpecial(myRoomSpec);
+	int myRoomSize = myCursor.getInt(11);
+	myRoomData.setRoomSize(myRoomSize);
+	int myBalcSize = myCursor.getInt(12);
+	myRoomData.setBalconySize(myBalcSize);
 	db.close();
 	return myRoomData;
 }

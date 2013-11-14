@@ -11,7 +11,10 @@ public class roomDataStruct {
 	private String cruiseLine;
 	private String roomInt;
 	private String roomExt;
-	
+	private int Occupancy;
+	private int roomSize;
+	private int balconySize;
+	private String RoomSpecial;
 
 	public int getRoomNum() {
 		return roomNum;
@@ -83,6 +86,38 @@ public class roomDataStruct {
 
 	public void setRoomExt(String roomExt) {
 		this.roomExt = roomExt;
+	}
+
+	public int getOccupancy() {
+		return Occupancy;
+	}
+
+	public void setOccupancy(int occupancy) {
+		Occupancy = occupancy;
+	}
+
+	public int getRoomSize() {
+		return roomSize;
+	}
+
+	public void setRoomSize(int roomSize) {
+		this.roomSize = roomSize;
+	}
+
+	public int getBalconySize() {
+		return balconySize;
+	}
+
+	public void setBalconySize(int balconySize) {
+		this.balconySize = balconySize;
+	}
+
+	public String getRoomSpecial() {
+		return RoomSpecial;
+	}
+
+	public void setRoomSpecial(String roomSpecial) {
+		RoomSpecial = roomSpecial;
 	}
 
 }

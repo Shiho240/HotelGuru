@@ -89,7 +89,10 @@ public class firstUseSetup extends Activity {
 			//NORMAL MODE CONTINUE TO MAIN ACTIVITY
 			SharedPreferences myLocale = getSharedPreferences(PREFS_NAME,0);
 			Log.v("NORMAL MODE", myLocale.getString("Locale", "EN_US"));
-			if(myLocale.getString("Locale","EN_US")=="EN_US")
+			String English = "EN_US";
+        	String compare =  myLocale.getString("Locale", "EN_US");
+        	Log.v("NORMAL MODE LOCALE", "COMPARE "+English+" to "+compare);
+           if(compare.equals(English))
 			{
 			Intent intent = new Intent(this, EnglishMain.class);
 			startActivity(intent);
