@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DeutschMain" >
+
+    <Spinner
+        android:id="@+id/DeckSelectSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ShipSelectSpinner"
+        android:layout_below="@+id/ShipSelectSpinner" />
+
+    <Spinner
+        android:id="@+id/ShipSelectSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/CruiseLineSpinner"
+        android:layout_below="@+id/CruiseLineSpinner" />
+
+    <Spinner
+        android:id="@+id/CruiseLineSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/SubmitMapSelect"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/SubmitMapSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick="onSpinnerSubmit"
+        android:text="Abschicken" />
+
+    <ImageView
+        android:id="@+id/ShipIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ShipData" />
+
+    <TextView
+        android:id="@+id/ShipData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ShipIcon"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SubmitMapSelect"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/CruiseLineSpinner"
+        android:layout_alignLeft="@+id/ShipData"
+        android:layout_alignTop="@+id/CruiseLineSpinner"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/CruiseLineSpinner"
+        android:text="Wahlen Sie eine Reederei"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignTop="@+id/ShipSelectSpinner"
+        android:layout_marginTop="18dp"
+        android:layout_toLeftOf="@+id/DeckSelectSpinner"
+        android:text="Wahlen Sie einen Kreuzfahrtschiff"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/DeckSelectSpinner"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/DeckSelectSpinner"
+        android:text="Wahlen sie einen Deck"
+        android:textStyle="bold" />
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/MasterShihoChief/EclipseWorkspace/HotelGuru/res/layout/deutsch_main.xml -->

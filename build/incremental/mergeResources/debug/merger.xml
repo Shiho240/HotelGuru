@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res" >
+            <file
+                name="deck12"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\drawable\deck12.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="deck12"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\drawable-hdpi\deck12.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\drawable-xxhdpi\ic_launcher.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="activity_english_main"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\layout\activity_english_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_maps_deutsch"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\layout\activity_maps_deutsch.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_maps_example"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\layout\activity_maps_example.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_state_room"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\layout\activity_state_room.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="deutsch_main"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\layout\deutsch_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="firstuse"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\layout\firstuse.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="deutsch_main"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\menu\deutsch_main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="english_main"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\menu\english_main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="main"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\menu\main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="maps_deutsch"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\menu\maps_deutsch.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="maps_example"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\menu\maps_example.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="state_room"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\menu\state_room.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\values\dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\values\localeSpinner.xml"
+                qualifiers="" >
+                <string-array name="locale_array" >
+                    <item>
+English
+                    </item>
+                    <item>
+Deutsch
+                    </item>
+                </string-array>
+            </file>
+            <file
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\values\strings.xml"
+                qualifiers="" >
+                <string name="title_section1" >Home
+                </string>
+                <string name="action_settings" >Settings
+                </string>
+                <string name="title_section3" >Reservations
+                </string>
+                <string name="title_section2" >Hotels
+                </string>
+                <string name="uidHint" >Username
+                </string>
+                <string name="title_activity_state_room" >StateRoom
+                </string>
+                <string name="submitHint" >Submit
+                </string>
+                <string name="passHint" >Password
+                </string>
+                <string name="title_activity_maps_deutsch" >MapsDeutsch
+                </string>
+                <string name="title_activity_maps_example" >MapsExample
+                </string>
+                <string name="title_activity_deutsch_main" >DeutschMain
+                </string>
+                <string name="zoom_in" >OMG ZOOM IN
+                </string>
+                <string name="app_name" >HotelGuru
+                </string>
+                <string name="title_activity_english_main" >EnglishMain
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+            </file>
+            <file
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\values\styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\values-sw720dp-land\dimens.xml"
+                qualifiers="sw720dp-land" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\values-v11\styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\res\values-v14\styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+        </source>
+        <source path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\build\res\rs\debug" />
+        <source path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\build\res\generated\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\build-types\debug\res" />
+    </dataSet>
+
+</merger>

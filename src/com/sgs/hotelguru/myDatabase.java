@@ -1,7 +1,5 @@
 package com.sgs.hotelguru;
 
-import java.util.ArrayList;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+
+import java.util.ArrayList;
 
 public class myDatabase extends SQLiteAssetHelper {
 	 private static final String DATABASE_NAME = "HotelGuru DB";

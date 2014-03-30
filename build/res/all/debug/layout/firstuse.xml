@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/uidHint"
+        android:inputType="textEmailAddress" />
+ <requestFocus android:layout_width="match_parent" />
+    
+    <EditText
+        android:id="@+id/userPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/passHint"
+        android:inputType="textPassword" />
+
+
+    <Spinner
+        android:id="@+id/localeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/locale_array"
+        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+
+    <Button
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+    	android:hint="@string/submitHint"
+    	android:onClick="onSubmit"/>
+</LinearLayout><!-- From: file:/C:/Users/MasterShihoChief/EclipseWorkspace/HotelGuru/res/layout/firstuse.xml -->

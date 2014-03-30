@@ -1,13 +1,5 @@
 package com.sgs.hotelguru;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -24,6 +16,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
 public class DeutschMain extends Activity {
 
 	
@@ -37,7 +37,7 @@ public class DeutschMain extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.deutsch_main);
 		db = new myDatabase(getApplicationContext());
-		this.setTitle("Willkommen Zurück "+db.getUser()+"!");
+		this.setTitle("Willkommen Zurï¿½ck "+db.getUser()+"!");
 		this.SetCruiseLine();
 		
 	}
@@ -121,7 +121,7 @@ public void SetShipDeck(String myShip){
 	      Log.v("Deutschmain", "global ship name is "+GlobalShipName);
 			shipStruct shipInfo = db.getShipData(GlobalShipName);
 			TextView shipStats = (TextView)findViewById(R.id.ShipData);
-			shipStats.append("Kreuzfahrtschiff Name: "+shipInfo.getShip_Name()+'\n'+"Reederei: "+shipInfo.getCruise_Line()+'\n'+"Land der Registrierung: "+shipInfo.getShip_Registry()+'\n'+ "Gebaut/Umgerüstet: "+shipInfo.getShip_Year()+'\n'+"Deckzahl: "+shipInfo.getShip_Decks()+'\n'+"Passagierkapazität: "+shipInfo.getCapacity()+" Reisenden"+'\n'+"Geschwindigkeit: "+shipInfo.getShip_Speed()+" Knoten"+'\n'+"Länge: "+Math.round(shipInfo.getShip_Length()*.3048)+" m");
+			shipStats.append("Kreuzfahrtschiff Name: "+shipInfo.getShip_Name()+'\n'+"Reederei: "+shipInfo.getCruise_Line()+'\n'+"Land der Registrierung: "+shipInfo.getShip_Registry()+'\n'+ "Gebaut/Umgerï¿½stet: "+shipInfo.getShip_Year()+'\n'+"Deckzahl: "+shipInfo.getShip_Decks()+'\n'+"Passagierkapazitï¿½t: "+shipInfo.getCapacity()+" Reisenden"+'\n'+"Geschwindigkeit: "+shipInfo.getShip_Speed()+" Knoten"+'\n'+"Lï¿½nge: "+Math.round(shipInfo.getShip_Length()*.3048)+" m");
 			ImageView shipIcon = (ImageView) findViewById(R.id.ShipIcon);
 			 //lets see if the image has already been cached in the sdcard
 	        File extStore = Environment.getExternalStorageDirectory();

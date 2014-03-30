@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+              
+<RelativeLayout
+    android:id="@+id/DeckLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:gravity="center_horizontal" >
+
+    <!-- <CustomDrawableView android:layout_height="fill_parent"
+               android:layout_width="fill_parent"
+              />  -->
+
+    <ImageView
+        android:id="@+id/ShipIcon"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:clickable="false"
+        android:scaleType="fitCenter"/>
+
+</RelativeLayout>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal" 
+    android:id="@+id/zoom_Layout">
+    <Button
+        android:id="@+id/zoom_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/zoom_in" />
+
+    <Button
+        android:id="@+id/zoom_out"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="OMG ZOOM OUT" />
+
+</FrameLayout>
+</LinearLayout>
+<!-- From: file:/C:/Users/MasterShihoChief/EclipseWorkspace/HotelGuru/res/layout/activity_maps_example.xml -->

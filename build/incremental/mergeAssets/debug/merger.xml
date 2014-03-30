@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets" >
+            <file
+                name="databases/HotelGuru"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\HotelGuru" />
+            <file
+                name="databases/HotelGuru DB.zip"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\HotelGuru DB.zip" />
+            <file
+                name="databases/powerinsert.ps1"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\powerinsert.ps1" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\build-types\debug\assets" />
+    </dataSet>
+
+</merger>
