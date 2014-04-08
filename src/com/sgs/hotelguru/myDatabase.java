@@ -11,7 +11,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.util.ArrayList;
 
 public class myDatabase extends SQLiteAssetHelper {
-	 private static final String DATABASE_NAME = "HotelGuru DB";
+	 private static final String DATABASE_NAME = "HotelGuru_Prod.sqlite";
 	    private static final int DATABASE_VERSION = 1;
 		private static final String TAG = "myDatabase";
 public myDatabase(Context context) {

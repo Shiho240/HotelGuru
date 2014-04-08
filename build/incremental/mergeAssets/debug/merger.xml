@@ -7,11 +7,20 @@
                 name="databases/HotelGuru"
                 path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\HotelGuru" />
             <file
-                name="databases/HotelGuru DB.zip"
-                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\HotelGuru DB.zip" />
-            <file
                 name="databases/powerinsert.ps1"
                 path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\powerinsert.ps1" />
+            <file
+                name="databases/testscript.perl"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\testscript.perl" />
+            <file
+                name="databases/sqlite_master.sql"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\sqlite_master.sql" />
+            <file
+                name="databases/test.sqlite"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\test.sqlite" />
+            <file
+                name="databases/HotelGuru_Prod"
+                path="C:\Users\MasterShihoChief\EclipseWorkspace\HotelGuru\assets\databases\HotelGuru_Prod" />
         </source>
     </dataSet>
     <dataSet config="debug" >

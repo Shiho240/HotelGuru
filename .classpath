@@ -7,6 +7,6 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK/google-play-services_lib"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK/ExpList3"/>
-	<classpathentry exported="true" kind="lib" path="libs/android-sqlite-asset-helper.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/sqliteassethelper-2.0.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
